@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zyrian Cloud Vertaler</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+</head>
+<body>
+    <h1>Zyrian Cloud Vertaler</h1>
+    
+    <input id="input" placeholder="Typ een woord">
+    <button onclick="testWoord()">Test woord</button>
+    <div id="output"></div>
+    
+    <h2>Opgeslagen woorden:</h2>
+    <div id="woorden-lijst"></div>
+
+    <script>
+        // Firebase configuratie (gratis)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDemoKey-1234567890",
+            authDomain: "zyrian-app.firebaseapp.com",
+            databaseURL: "https://zyrian-app-default-rtdb.firebaseio.com",
+            projectId: "zyrian-app",
+            storageBucket: "zyrian-app.appspot.com",
+            messagingSenderId: "1234567890"
+        };
+
+        // Initialiseer Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // Functie om woord op te slaan
+        async function saveWoord(woord) {
+            const woordRef = database.ref('woorden/' + woord.toLowerCase());
+            await woordRef.set({
+                woord: woord.toLowerCase(),
+                timestamp: Date.now(),
+                toegevoegdDoor: 'gebruiker'
+            });
+            console.log('Woord opgeslagen:', woord);
+        }
+
+        // Functie om alle woorden te laden
+        function loadWoorden() {
+            const woordenRef = database.ref('woorden');
+            woordenRef.on('value', (snapshot) => {
+                const woorden = snapshot.val();
+                const lijst = document.getElementById('woorden-lijst');
+                
+                if (woorden) {
+                    const woordenArray = Object.keys(woorden);
+                    lijst.innerHTML = '<p>' + woordenArray.join(', ') + '</p>';
+                    console.log('Woorden geladen:', woordenArray);
+                } else {
+                    lijst.innerHTML = '<p>Geen woorden gevonden</p>';
+                }
+            });
+        }
+
+        // Test functie
+        async function testWoord() {
+            const input = document.getElementById('input').value.trim();
+            if (input) {
+                await saveWoord(input);
+                document.getElementById('input').value = '';
+            }
+        }
+
+        // Start met laden
+        loadWoorden();
+    </script>
+</body>
+</html>

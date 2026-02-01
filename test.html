@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zyrian Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+    button { padding: 10px; margin: 5px; }
+    input { padding: 10px; width: 300px; }
+    #storage-info { background: #f0f0f0; padding: 10px; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>Zyrian Test Pagina</h1>
+  
+  <div class="test-section">
+    <h2>Test 1: Opslaan</h2>
+    <input id="test-input" placeholder="Typ een woord">
+    <button onclick="testOpslaan()">Sla woord op</button>
+  </div>
+  
+  <div class="test-section">
+    <h2>Test 2:LocalStorage Info</h2>
+    <button onclick="toonStorage()">Laat zien wat er is opgeslagen</button>
+    <div id="storage-info"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Test 3: Wissen</h2>
+    <button onclick="wisStorage()">Wis alles</button>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "zyrian-nog-te-vertalen";
+    
+    function testOpslaan() {
+      const input = document.getElementById('test-input').value.trim();
+      if (!input) {
+        alert('Typ eerst een woord!');
+        return;
+      }
+      
+      // Haal huidige lijst
+      let lijst = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      
+      // Voeg toe als het niet bestaat
+      if (!lijst.includes(input.toLowerCase())) {
+        lijst.push(input.toLowerCase());
+        lijst.sort();
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(lijst));
+        alert(`Woord "${input}" opgeslagen! Totaal: ${lijst.length}`);
+      } else {
+        alert(`Woord "${input}" bestond al!`);
+      }
+      
+      document.getElementById('test-input').value = '';
+      toonStorage();
+    }
+    
+    function toonStorage() {
+      const lijst = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+      const info = document.getElementById('storage-info');
+      
+      if (lijst.length === 0) {
+        info.innerHTML = '<strong>Geen woorden opgeslagen</strong>';
+      } else {
+        info.innerHTML = `
+          <strong>Aantal woorden:</strong> ${lijst.length}<br>
+          <strong>Woorden:</strong> ${lijst.join(', ')}<br>
+          <strong>Raw data:</strong> <pre>${localStorage.getItem(STORAGE_KEY)}</pre>
+        `;
+      }
+    }
+    
+    function wisStorage() {
+      if (confirm('Weet je zeker dat je alles wilt wissen?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        alert('Alles gewist!');
+        toonStorage();
+      }
+    }
+    
+    // Laat zien wat er is bij laden
+    toonStorage();
+  </script>
+</body>
+</html>
