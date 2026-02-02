@@ -3,88 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zyrian Vertaler - Keuze</title>
+  <title>Zyrian Vertaler</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background: #f5f5f5;
       margin: 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
+      padding: 2rem;
       text-align: center;
     }
     .container {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 3rem;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     h1 {
+      color: #333;
       margin-bottom: 2rem;
-      font-size: 2.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
     .buttons {
       display: flex;
-      gap: 2rem;
+      gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
     }
     .btn {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      display: inline-block;
       padding: 1rem 2rem;
-      border-radius: 15px;
+      background: #007bff;
+      color: white;
       text-decoration: none;
-      font-size: 1.2rem;
+      border-radius: 4px;
       font-weight: bold;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      transition: background 0.3s;
     }
     .btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      background: #0056b3;
     }
     .btn.vrienden {
-      background: rgba(76, 175, 80, 0.3);
-      border-color: rgba(76, 175, 80, 0.5);
+      background: #28a745;
+    }
+    .btn.vrienden:hover {
+      background: #1e7e34;
     }
     .btn.beheer {
-      background: rgba(244, 67, 54, 0.3);
-      border-color: rgba(244, 67, 54, 0.5);
+      background: #dc3545;
     }
-    .icon {
-      font-size: 1.5rem;
+    .btn.beheer:hover {
+      background: #c82333;
     }
-    .subtitle {
+    p {
+      color: #666;
       margin-bottom: 2rem;
-      opacity: 0.9;
-      font-size: 1.1rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Zyrian Vertaler</h1>
-    <p class="subtitle">Kies je modus</p>
+    <p>Kies je modus</p>
     
     <div class="buttons">
-      <a href="vrienden/" class="btn vrienden">
-        <span class="icon">👥</span>
-        Vrienden
-      </a>
-      <a href="tijn/" class="btn beheer">
-        <span class="icon">⚙️</span>
-        Beheer (Tijn)
-      </a>
+      <a href="vrienden/" class="btn vrienden">Vrienden</a>
+      <a href="tijn/" class="btn beheer">Beheer (Tijn)</a>
     </div>
   </div>
 </body>
