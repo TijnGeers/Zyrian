@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zyrian Vertaler - Beheer</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script>
+    (function() {
+      const WACHTWOORD = "zyrian2026";
+      const SESSION_KEY = "zyrian-beheer-auth";
+      
+      if (sessionStorage.getItem(SESSION_KEY) === "true") return;
+      
+      const invoer = prompt("Voer het wachtwoord in om toegang te krijgen:");
+      if (invoer === WACHTWOORD) {
+        sessionStorage.setItem(SESSION_KEY, "true");
+      } else {
+        alert("Onjuist wachtwoord!");
+        window.location.href = "../vrienden/";
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Zyrian Vertaler</h2>
+    <div class="subtitle">Nederlands ⇄ Zyrian</div>
+
+    <input id="input" placeholder="Typ hier een zin" />
+
+    <div class="buttons">
+      <button class="nl" id="btn-nl">Nederlands → Zyrian</button>
+      <button class="zy" id="btn-zy">Zyrian → Nederlands</button>
+    </div>
+
+    <textarea id="output" rows="7" readonly placeholder="Vertaling verschijnt hier..."></textarea>
+
+    <div id="onbekend" class="onbekend"></div>
+
+    <div class="nog-te-vertalen">
+      <div class="nog-te-vertalen-header">
+        <span>Nog te vertalen (<span id="nog-count">0</span> woorden)</span>
+        <div class="nog-te-vertalen-buttons">
+          <button id="btn-download" title="Download lijst">⬇️</button>
+          <button id="btn-clear" title="Wis lijst">🗑️</button>
+        </div>
+      </div>
+      <div id="nog-lijst" class="nog-lijst"></div>
+    </div>
+
+    <div class="footer"><span id="year"></span> © Npanekoekje</div>
+  </div>
+
+  <!-- Firebase SDK - MOET EERST LADEN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <!-- Dan cloud.js -->
+  <script src="../cloud.js"></script>
+  <!-- Dan woordenboek en script -->
+  <script src="../woordenboek.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

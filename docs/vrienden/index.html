@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zyrian Vertaler - v2</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h2>Zyrian Vertaler</h2>
+    <div class="subtitle">Nederlands ⇄ Zyrian</div>
+
+    <input id="input" placeholder="Typ hier een zin" />
+
+    <div class="buttons">
+      <button class="nl" id="btn-nl">Nederlands → Zyrian</button>
+      <button class="zy" id="btn-zy">Zyrian → Nederlands</button>
+    </div>
+
+    <textarea id="output" rows="7" readonly placeholder="Vertaling verschijnt hier..."></textarea>
+
+    <div id="onbekend" class="onbekend"></div>
+
+    <div class="footer"><span id="year"></span> © Npanekoekje</div>
+  </div>
+
+  <!-- Firebase SDK - MOET EERST LADEN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <!-- Dan cloud.js -->
+  <script src="../cloud.js"></script>
+  <!-- Dan woordenboek en script -->
+  <script src="../woordenboek.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>

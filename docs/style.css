@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: radial-gradient(circle at top, #2b1b3f, #0b1026);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e8ecff;
+}
+
+.container {
+  background: linear-gradient(160deg, #10162f, #0a0f24);
+  width: 90%;
+  max-width: 650px;
+  padding: 28px;
+  border-radius: 22px;
+  box-shadow:
+    0 0 30px rgba(110, 120, 255, 0.25),
+    0 0 80px rgba(0, 255, 255, 0.08);
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 1px;
+  color: #9ad7ff;
+  text-shadow: 0 0 12px rgba(154, 215, 255, 0.6);
+}
+
+.subtitle {
+  text-align: center;
+  color: #aab4ff;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: 2px solid #1f2a5c;
+  background: #0b132f;
+  color: #e8ecff;
+  outline: none;
+  margin-bottom: 16px;
+}
+
+input::placeholder {
+  color: #6f7bdc;
+}
+
+textarea {
+  resize: none;
+  background: #0d1638;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+button {
+  flex: 1;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+button.nl {
+  background: linear-gradient(135deg, #7f5cff, #5a3cff);
+  color: #ffffff;
+}
+
+button.zy {
+  background: linear-gradient(135deg, #2fe6ff, #1bbcd4);
+  color: #002b36;
+}
+
+.onbekend {
+  font-size: 13px;
+  color: #ff9a9a;
+  margin-bottom: 12px;
+  padding: 10px;
+  background: rgba(255, 100, 100, 0.1);
+  border-radius: 10px;
+  display: none;
+}
+
+.onbekend.visible {
+  display: block;
+}
+
+.nog-te-vertalen {
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(100, 150, 255, 0.08);
+  border-radius: 12px;
+  border: 1px solid #1f2a5c;
+}
+
+.nog-te-vertalen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #aab4ff;
+  margin-bottom: 8px;
+}
+
+.nog-te-vertalen-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.nog-te-vertalen-buttons button {
+  flex: none;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  background: #1f2a5c;
+  color: #aab4ff;
+  border: none;
+  cursor: pointer;
+}
+
+.nog-te-vertalen-buttons button:hover {
+  background: #2a3a7c;
+}
+
+.nog-lijst {
+  font-size: 12px;
+  color: #8899cc;
+  max-height: 100px;
+  overflow-y: auto;
+  word-wrap: break-word;
+}
+
+.nog-lijst:empty::before {
+  content: "Nog geen onbekende woorden gevonden.";
+  font-style: italic;
+  color: #5566aa;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #7f8cff;
+  margin-top: 10px;
+}
