@@ -857,6 +857,9 @@ window.ZYRIAN_WOORDENBOEK = {
   "veerle": "ervele",
   "nina": "kwastois",
   "kenzi": "ziken",
+  "simon": "aysbe",
+  "leander": "londre",
+  "naut": "tanu",
 
   // === UITBREIDING DEEL 1: WERKWOORDEN ===
   "maken": "kreal",
